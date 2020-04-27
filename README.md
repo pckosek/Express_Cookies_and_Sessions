@@ -2,15 +2,15 @@
 
 ### Demonstrations of how Cookies and Sessions work within Express
 
-- **01_Cookies** - Basic Server Initialization, Inital Request, Code Reponse ([LECTURE](https://www.youtube.com/watch?v=lTkv5xMrfq0))
-	- **01.01 - Hello Cookie**
-	- **01.02 - Checking Cookie**
-	- **01.01 - Using Cookie Value**
+- **01_cookies** - Basic Cookies using [cookie-parser](https://https://www.npmjs.com/package/cookie-parser)
+	- **01.01 - Hello Cookie** - Writing a value to a cookie ([LECTURE](https://www.youtube.com/watch?v=0D_i8HCc88A))
+	- **01.02 - Checking Cookie** - Determining the value written to the cookie ([LECTURE](https://www.youtube.com/watch?v=VmOxQqbaKCM))
+	- **01.01 - Using Cookie Value** - Using the value of the cookie in page rendering ([LECTURE](https://www.youtube.com/watch?v=gEBAfjHGR1Y))
 
-- **02_code_and_token.js** - How the Code is converted to a Token ([LECTURE](https://www.youtube.com/watch?v=2i9PWZ3sv9A))
 
-- **03_the_access_token.js** - Getting the Access Token out of the Token ([LECTURE](https://www.youtube.com/watch?v=tcJlagxsm9M))
+- **02_cookie_session** - An Express Session using [cookie-session](https://www.npmjs.com/package/cookie-session) ([LECTURE](https://www.youtube.com/watch?v=k4kRa8Cz_PI))
 
-- **04_basic_authenticated_state.js** - Maintinaing an Authenticated State ([LECTURE](https://www.youtube.com/watch?v=qg-SYRGAnD8))
-	
-- **05_minimal_working_oauth.js** - Putting it all together ([LECTURE](https://www.youtube.com/watch?v=o0jFPn3sZgM))
+- **03_express_session** - An Express Session using [express-session](https://www.npmjs.com/package/express-session) ([LECTURE](https://www.youtube.com/watch?v=x4gRKmXoYJQ))
+
+
+

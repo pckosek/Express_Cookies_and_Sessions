@@ -26,18 +26,19 @@ app.get('/', function(req, res){
 	console.log( req.cookies )
 	console.log( req.signedCookies )
 	
-	// var visit_count = Number(req.cookies.visit_count);
-	var visit_count = Number(req.signedCookies.visit_count);
+	var visit_count = Number(req.cookies.visit_count);
+// 	var visit_count = Number(req.signedCookies.visit_count);
 	
 	if (Number.isNaN(visit_count)) {
 		visit_count = 1;
 	} else {
 		visit_count += 1;
 	}
-	res.cookie('visit_count', visit_count, {signed:true, secure:true})
+	res.cookie('visit_count', visit_count)
+// 	res.cookie('visit_count', visit_count, {signed:true, secure:true})
 
 	// render the page
-    res.render('home', {'visitor':visit_count})
+    res.render('home', {'visit_number':visit_count})
 });
 
 app.get('/ok', function(req, res){

@@ -1,7 +1,7 @@
 #!/usr/bin/nodejs
 
 // -------------- load packages -------------- //
-// INITIALIZATION STUFF
+// INITIALIZATION 
 
 var express = require('express')
 var app = express();
@@ -18,9 +18,6 @@ var hbs = require('hbs');
 
 
 // -------------- express initialization -------------- //
-// PORT SETUP - NUMBER SPECIFIC TO THIS SYSTEM
-
-app.set('port', process.env.PORT || 8080 );
 app.set('view engine', 'hbs');
 
 
@@ -47,16 +44,16 @@ app.get('/', function(req, res){
     console.log( req.session )
 
     // render the page
-    res.render('home', {'visitor':visit_count})
+    res.render('home', {'visit_number':visit_count})
 });
 
 app.get('/small_key', function(req, res){
 
     req.session.small = 'teensy';
 
-    // write html content
-    res.write('ok');
-    res.end()
+    // send a page that does not have a cookie
+    res.send('<!DOCTYPE html><html><body><h1>Wrote a small amount of data to req.session</h1></body></html>');
+
 });
 
 
@@ -65,11 +62,11 @@ app.get('/massive_key', function(req, res){
 
     var blah = 'blah blah ';
 
+    // string.repeat(X) repeats a string X number of times
     req.session.big = blah.repeat(200);
 
     // write html content
-    res.write('ok');
-    res.end()
+    res.send('<!DOCTYPE html><html><body><h1>Wrote a HUGE amount of data to req.session</h1></body></html>');
 });
 
 
@@ -77,6 +74,6 @@ app.get('/massive_key', function(req, res){
 // -------------- listener -------------- //
 // // The listener is what keeps node 'alive.' 
 
-var listener = app.listen(app.get('port'), function() {
-  console.log( 'Express server started on port: '+listener.address().port );
+var listener = app.listen(process.env.PORT || 8080, process.env.HOST || "0.0.0.0", function() {
+    console.log("Express server started");
 });

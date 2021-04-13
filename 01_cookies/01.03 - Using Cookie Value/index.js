@@ -1,6 +1,5 @@
 #!/usr/bin/nodejs
 
-console.clear()
 // -------------- load packages -------------- //
 // INITIALIZATION STUFF
 
@@ -14,7 +13,6 @@ var hbs = require('hbs');
 // -------------- express initialization -------------- //
 // PORT SETUP - NUMBER SPECIFIC TO THIS SYSTEM
 
-app.set('port', process.env.PORT || 80 );
 app.set('view engine', 'hbs');
 app.use(cookieParser('somesecret'));
 
@@ -44,9 +42,8 @@ app.get('/', function(req, res){
 
 app.get('/ok', function(req, res){
 
-	// write html content
-	res.write('ok');
-    res.end()
+	// send a page that does not have a cookie
+    res.send('<!DOCTYPE html><html><body><h1> OK </h1></body></html>');
 });
 
 
@@ -54,6 +51,6 @@ app.get('/ok', function(req, res){
 // -------------- listener -------------- //
 // // The listener is what keeps node 'alive.' 
 
-var listener = app.listen(app.get('port'), function() {
-  console.log( 'Express server started on port: '+listener.address().port );
+var listener = app.listen(process.env.PORT || 8080, process.env.HOST || "0.0.0.0", function() {
+    console.log("Express server started");
 });

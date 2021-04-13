@@ -1,8 +1,7 @@
 #!/usr/bin/nodejs
 
-console.clear()
 // -------------- load packages -------------- //
-// INITIALIZATION STUFF
+// INITIALIZATION 
 
 var express = require('express')
 var app = express();
@@ -12,10 +11,6 @@ var cookieParser = require('cookie-parser')
 
 
 // -------------- express initialization -------------- //
-// PORT SETUP - NUMBER SPECIFIC TO THIS SYSTEM
-
-app.set('port', process.env.PORT || 80 );
-// app.set('port', process.env.PORT || 8080 );
 
 // tell express to use cookie parser
 app.use(cookieParser());
@@ -40,6 +35,8 @@ app.get('/', function(req, res){
 		var visit_count = Number(req.cookies.visit_count);
 		res.cookie('visit_count', visit_count+1)
 
+
+		// // A MORE THOROUGH WAY WOULD BE TO VALIDATE COOKIE DATA
 		// var visit_count = Number(req.cookies.visit_count);
 		// if (Number.isNaN(visit_count)) {
 		// 	res.cookie('visit_count', 1)
@@ -52,15 +49,14 @@ app.get('/', function(req, res){
 
 
 	// write out page content
-	res.write('hola');
-    res.end()
+    res.send('<!DOCTYPE html><html><body><h1>HELLO</h1></body></html>');
+
 });
 
 app.get('/ok', function(req, res){
 
-	// write html content
-	res.write('ok');
-    res.end()
+	// send a page that does not have a cookie
+    res.send('<!DOCTYPE html><html><body><h1> OK </h1></body></html>');
 });
 
 
@@ -68,6 +64,6 @@ app.get('/ok', function(req, res){
 // -------------- listener -------------- //
 // // The listener is what keeps node 'alive.' 
 
-var listener = app.listen(app.get('port'), function() {
-  console.log( 'Express server started on port: '+listener.address().port );
+var listener = app.listen(process.env.PORT || 8080, process.env.HOST || "0.0.0.0", function() {
+    console.log("Express server started");
 });
